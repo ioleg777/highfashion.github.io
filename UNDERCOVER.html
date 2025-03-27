@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNDERCOVER | HIGH FASHION</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --dark-bg: #121212;
+            --darker-bg: #1E1E1E;
+            --medium-gray: #2E2E2E;
+            --light-gray: #3E3E3E;
+            --lighter-gray: #4E4E4E;
+            --text-color: #E0E0E0;
+            --text-muted: #9E9E9E;
+            --accent-color: #757575;
+            --card-bg: #25252500;
+            --card-border: #35353500;
+            --neon-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            background-image: url('kart/3.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            color: var(--text-color);
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            font-weight: 400;
+            padding-top: 0;
+            margin: 0;
+            position: relative;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(18, 18, 18, 0.2);
+            z-index: -1;
+        }
+        
+        .subtitle-box {
+            display: inline-block;
+            background-color: black;
+            padding: 15px 30px;
+            margin-top: 20px;
+        }
+        
+        .subtitle-box p {
+            color: white !important;
+            margin-bottom: 0;
+        }
+        
+        .history-text p {
+            color: white !important;
+        }
+        
+        /* Новый стиль для белого текста в карточках */
+        .product-card h3,
+        .product-card p,
+        .product-card ul,
+        .product-card li {
+            color: white !important;
+        }
+        
+        /* Остальные стили остаются без изменений */
+        .navbar-brand,
+        .nav-link,
+        .contact-item,
+        .social-link,
+        .copyright {
+            text-shadow: 
+                0 0 1px var(--neon-color),
+                0 0 2px var(--neon-color),
+                0 0 4px var(--neon-color);
+            transition: text-shadow 0.3s ease;
+        }
+        
+        .navbar-brand:hover,
+        .nav-link:hover,
+        .contact-item:hover,
+        .social-link:hover {
+            text-shadow: 
+                0 0 2px var(--neon-color),
+                0 0 4px var(--neon-color),
+                0 0 6px var(--neon-color);
+        }
+
+        .navbar {
+            background-color: var(--darker-bg) !important;
+            border-bottom: 1px solid var(--medium-gray);
+            padding: 1.8rem 0;
+            position: static !important;
+            min-height: 90px;
+        }
+        
+        .navbar-brand {
+            font-weight: 300;
+            font-size: 2.2rem;
+            letter-spacing: 3px;
+            color: var(--text-color) !important;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-link {
+            font-weight: 300;
+            font-size: 1.2rem;
+            padding: 0.8rem 2rem !important;
+            color: var(--text-muted) !important;
+            transition: all 0.4s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--text-color) !important;
+        }
+        
+        .hero-section {
+            position: relative;
+            padding: 12rem 0;
+            text-align: center;
+            border-bottom: 1px solid var(--medium-gray);
+            overflow: hidden;
+            margin-top: -1px;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: grayscale(100%) contrast(120%);
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 18, 18, 0.2), rgba(18, 18, 18, 0.15));
+            z-index: -1;
+        }
+        
+        .hero-section h1 {
+            font-weight: 300;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: 8px;
+            color: var(--text-color);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        
+        section {
+            padding: 6rem 0;
+            overflow: hidden;
+            background-color: rgba(18, 18, 18, 0.175);
+            backdrop-filter: blur(5px);
+        }
+        
+        .section-title {
+            font-weight: 300;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 5px;
+            color: var(--text-color);
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+        }
+        
+        .brand-card {
+            background-color: rgba(37, 37, 37, 0.7);
+            border: 1px solid var(--medium-gray);
+            padding: 3rem;
+            margin-bottom: 4rem;
+            transition: all 0.4s ease;
+        }
+        
+        .product-card {
+            background-color: rgba(30, 30, 30, 0.8);
+            border: 1px solid var(--medium-gray);
+            padding: 2rem;
+            margin-bottom: 3rem;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-left: 3px solid var(--text-color);
+        }
+        
+        .product-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            filter: grayscale(100%) contrast(110%);
+        }
+        
+        footer {
+            background-color: var(--darker-bg);
+            color: var(--text-color);
+            padding: 5rem 0 2rem;
+            border-top: 1px solid var(--medium-gray);
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Навбар -->
+    <nav class="navbar navbar-expand-lg navbar-dark" data-aos="fade-down" data-aos-duration="800">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" aria-label="High Fashion">
+                HIGH FASHION
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-expanded="false" aria-label="Переключить навигацию">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html" data-aos="fade-down" data-aos-delay="100">ГЛАВНАЯ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#brands" data-aos="fade-down" data-aos-delay="200">БРЕНДЫ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact" data-aos="fade-down" data-aos-delay="300">КОНТАКТЫ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Герой секция -->
+    <section class="hero-section">
+        <img src="kart/3.jpg" alt="Undercover Collection" class="hero-bg" loading="lazy">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <h1 data-aos="fade-up" data-aos-duration="1000">UNDERCOVER</h1>
+            <div class="subtitle-box" data-aos="fade-up" data-aos-delay="200">
+                <p class="section-subtitle mb-0">Панк-эстетика встречает haute couture | 1993 - настоящее время</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Основной контент -->
+    <main>
+        <section>
+            <div class="container">
+                <!-- История бренда -->
+                <div class="brand-card" data-aos="fade-up">
+                    <h2 class="section-title">ИСТОРИЯ СОЗДАНИЯ</h2>
+                    <div class="row history-text">
+                        <div class="col-md-6">
+                            <p>Японский дизайнер Дзюн Такахаши основал UNDERCOVER в 1993 году, будучи студентом Bunka Fashion College в Токио. Начав как бренд уличной одежды, он быстро привлек внимание своей провокационной эстетикой, сочетающей панк-культуру и японский сюрреализм.</p>
+                            <p>В 2002 году Такахаши совершил прорыв, представив первую коллекцию в Париже под названием "SCAB" (парша). Его показы стали театральными перформансами, где модели с искусственными увечьями демонстрировали одежду, бросающую вызов традиционной красоте.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>Философия бренда строится на принципе "Анархия в разуме, порядок в одежде". Такахаши мастерски сочетает уличный стиль с высокой модой, часто используя литературные и кинематографические отсылки (особенно к "Заводному апельсину" и "Чужому").</p>
+                            <p>Сегодня UNDERCOVER - это глобальный бренд с культовым статусом, сотрудничающий с Nike, Uniqlo и Supreme, но сохраняющий свою андерграундную ДНК. Такахаши остается одним из самых инновационных дизайнеров современности.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Знаковые изделия -->
+                <h2 class="section-title text-center" data-aos="fade-up">ЗНАКОВЫЕ ПРОДУКТЫ</h2>
+                
+                <div class="row">
+                    <!-- Продукт 1 -->
+                    <div class="col-md-6" data-aos="fade-up">
+                        <div class="product-card">
+                            <img src="under/1.avif" class="product-img" alt="Anarchy Jacket">
+                            <h3>ANARCHY JACKET</h3>
+                            <p>Кожаная куртка с граффити-принтами из коллекции 2001 года, ставшая символом бренда.</p>
+                            <ul>
+                                <li>Ручная роспись</li>
+                                <li>Асимметричный крой</li>
+                                <li>Фрагменты текстов панк-песен</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Продукт 2 -->
+                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="product-card">
+                            <img src="under/2.webp" class="product-img" alt="But Beautiful Dress">
+                            <h3>"BUT BEAUTIFUL" DRESS</h3>
+                            <p>Платье из коллекции 2003 года с оптическими иллюзиями, вдохновленное психоделическим искусством.</p>
+                            <ul>
+                                <li>3D-эффекты</li>
+                                <li>Сложный крой</li>
+                                <li>Светоотражающие элементы</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Продукт 3 -->
+                    <div class="col-md-6" data-aos="fade-up">
+                        <div class="product-card">
+                            <img src="under/3.jpg" class="product-img" alt="Gyakusou Sneakers">
+                            <h3>GYAKUSOU SNEAKERS</h3>
+                            <p>Беговые кроссовки из коллаборации с Nike (2010), объединяющие технологии и японскую эстетику.</p>
+                            <ul>
+                                <li>Ультралегкие материалы</li>
+                                <li>Анатомическая стелька</li>
+                                <li>Скрытые детали</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Продукт 4 -->
+                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="product-card">
+                            <img src="under/4.webp" class="product-img" alt="Paper Doll Bag">
+                            <h3>PAPER DOLL BAG</h3>
+                            <p>Сумка из коллекции 2018 года, вдохновленная детскими бумажными куклами.</p>
+                            <ul>
+                                <li>Многослойный дизайн</li>
+                                <li>Съемные элементы</li>
+                                <li>Ручная вышивка</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+     <!-- Футер с контактами -->
+     <footer id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-center mb-5">
+                        <h2>КОНТАКТЫ</h2>
+                        <p class="section-subtitle">СВЯЖИТЕСЬ С НАМИ</p>
+                    </div>
+                    
+                    <div class="contact-row">
+                        <a href="tel:+39021234567" class="contact-item text-decoration-none" aria-label="Позвоните нам">
+                            <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+                            <span>+39 02 123 4567</span>
+                        </a>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://t.me/wwwwqeqeqw" class="social-link" aria-label="Telegram" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-telegram" aria-hidden="true"></i>
+                            <span class="d-none d-sm-inline">TELEGRAM</span>
+                        </a>
+                    </div>
+                    
+                    <div class="copyright">
+                        <p class="mb-0">© 2025 HIGH FASHION. ВСЕ ПРАВА ЗАЩИЩЕНЫ</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.044042043313!2d9.1903513155693!3d45.46764497910136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c6a5e09c9f2b%3A0x3e8a5c9c0e9b5a1b!2sVia%20Montenapoleone%2C%2021%2C%2020122%20Milano%20MI%2C%20Italy!5e0!3m2!1sen!2sru!4v1620000000000!5m2!1sen!2sru" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Инициализация AOS -->
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 120,
+            disable: function() {
+                return window.innerWidth < 768;
+            }
+        });
+    </script>
+</body>
+</html>
